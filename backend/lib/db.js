@@ -18,6 +18,13 @@ export const CHALLENGES = [
   ['jalan-kaki', 'Jalan kaki 10 menit setelah makan', 'Jalan santai sebentar setelah makan siang atau malam. Kebiasaan kecil, manfaat besar.'],
 ];
 
+export const CHALLENGES_EN = [
+  ['sarapan-protein', '7 days of protein breakfast', 'Have a protein source for breakfast every day (eggs, tempeh, tofu, milk), then check-in. Photos are optional.'],
+  ['tanpa-minuman-manis', 'A week without sugary drinks', 'Replace sugary drinks with water or plain tea. Check-in every day you succeed.'],
+  ['tambah-sayur', 'Add vegetables to every lunch', 'Make sure there is at least one portion of vegetables at lunch, whether at home or eating out.'],
+  ['jalan-kaki', 'Walk 10 minutes after eating', 'Take a short leisurely walk after lunch or dinner. Small habit, big benefit.'],
+];
+
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
