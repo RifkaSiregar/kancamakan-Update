@@ -565,7 +565,21 @@ export function registerApi(app, db, { uploadsDir, push }) {
   // Pengguna tidak memilih sendiri: dari semua tantangan, diambil PERSONAL_SIZE yang paling cocok dengan topik
   // profil + topik Rencana Sehatku, lalu bergiliran satu per minggu. Tantangan minggu berjalan dikunci di challenge_weeks.
   const PERSONAL_SIZE = 4;
-  const CH = CHALLENGES.map(([id, title, body, topics, days], sort) => ({ id, title, body, topics, days, sort }));
+  
+  // PERBAIKAN: Gunakan fallback untuk topics dan days agar tidak undefined
+  const CH = CHALLENGES.map((c, sort) => ({ 
+    id: c[0], 
+    title: c[1], 
+    body: c[2], 
+    topics: c[3] || [], 
+    days: c[4] || [
+      'Lakukan langkah kecil hari ini', 'Lakukan langkah kecil hari ini', 'Lakukan langkah kecil hari ini', 
+      'Lakukan langkah kecil hari ini', 'Lakukan langkah kecil hari ini', 'Lakukan langkah kecil hari ini', 
+      'Lakukan langkah kecil hari ini'
+    ], 
+    sort 
+  }));
+
   const chById = (id) => CH.find((c) => c.id === id);
   const weekNo = (monday) => Math.floor(Date.parse(`${monday}T00:00:00Z`) / (7 * 864e5));
 
